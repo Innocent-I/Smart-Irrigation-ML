@@ -168,18 +168,6 @@ The project will be progressively extended toward a more realistic smart-agricul
 5. **Remote sensing** — integrate satellite observations and vegetation indices such as NDVI.
 6. **Multimodal AI** — combine ground sensors, weather information, and satellite imagery for more robust agricultural decision support.
 
-## Author
-
-**Innocent Irankunda**
-
-Assistant Lecturer and ICT professional with interests in Machine Learning, Artificial Intelligence, IoT, Data Analytics, Remote Sensing, Environmental Monitoring, and AI applications in agriculture.
-
-## Acknowledgment
-
-The original irrigation sensor dataset was created and published by **Amritpal Kaur, Devershi Pallavi Bhatt, and Linesh Raja**. This repository presents an independent analysis and machine learning implementation using their publicly available dataset.
-
-**Dataset:** https://doi.org/10.17632/fpdwmm7nrb.1
-
 ## Repository Structure
 
 ```text
@@ -195,4 +183,18 @@ Smart-Irrigation-ML/
 │   └── 03_model_training.ipynb
 │
 └── README.md
+
+## Author
+
+**Innocent Irankunda**
+
+Assistant Lecturer and ICT professional with interests in Machine Learning, Artificial Intelligence, IoT, Data Analytics, Remote Sensing, Environmental Monitoring, and AI applications in agriculture.
+
+## Acknowledgment
+
+The original irrigation sensor dataset was created and published by **Amritpal Kaur, Devershi Pallavi Bhatt, and Linesh Raja**. This repository presents an independent analysis and machine learning implementation using their publicly available dataset.
+
+**Dataset:** https://doi.org/10.17632/fpdwmm7nrb.1
+
+
 
