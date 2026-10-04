@@ -143,3 +143,38 @@ Smart-Irrigation-ML/
 │   └── 03_model_training.ipynb
 │
 └── README.md
+
+Notebooks
+01 — Data Exploration
+Explores dataset structure, missing values, distributions, correlations, pump-status relationships, and environmental variables.
+02 — Data Preprocessing
+Validates the dataset, investigates potential outliers, defines features and target variables, performs stratified train/test splitting, establishes the threshold baseline, and scales features where required.
+03 — Model Training and Comparison
+Trains Logistic Regression, Decision Tree, and Random Forest classifiers and evaluates their performance using accuracy, precision, recall, F1-score, confusion matrices, and feature importance.
+Technologies
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Google Colab
+- GitHub
+Limitations
+- The dataset contains only three predictor variables.
+- Pump status is overwhelmingly associated with soil moisture.
+- Results are based on a single train/test split.
+- The models have not yet been validated using an independent field dataset.
+- High performance on this dataset should not be interpreted as equivalent performance under real agricultural conditions.
+Future Work
+The project will be progressively extended toward a more realistic smart-agriculture monitoring system through:
+1. Real-time IoT integration — collect soil and environmental measurements directly from field sensors.
+2. Weather integration — incorporate rainfall, temperature forecasts, and other meteorological variables.
+3. Crop- and soil-specific modelling — account for different irrigation requirements.
+4. Water-demand prediction — move beyond Pump ON/OFF classification to estimating irrigation quantity.
+5. Remote sensing — integrate satellite observations and vegetation indices such as NDVI.
+6. Multimodal AI — combine ground sensors, weather information, and satellite imagery for more robust agricultural decision support.
+Author
+Innocent Irankunda
+Research interests: Machine Learning, Artificial Intelligence, IoT, Data Analytics, Remote Sensing, Environmental Monitoring, and AI applications in agriculture.
+Acknowledgment
+The original irrigation sensor dataset was created and published by Kaur, Bhatt, and Raja. This repository presents an independent analysis and machine learning implementation using their publicly available dataset.
