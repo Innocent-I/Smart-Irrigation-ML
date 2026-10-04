@@ -1,38 +1,145 @@
-# Smart Irrigation ML System
+# 🌱 Smart Irrigation ML System
 
-A machine learning and IoT-based smart irrigation project for predicting irrigation needs using soil and environmental data.
+A reproducible machine learning project for predicting irrigation pump status using soil moisture, air temperature, and humidity sensor data.
 
-## Project Objective
+## Overview
 
-The objective of this project is to develop a data-driven irrigation decision system that can determine whether irrigation is required based on soil and environmental conditions.
+Efficient irrigation is important for sustainable agriculture and water-resource management. This project investigates whether machine learning can predict irrigation pump decisions from environmental sensor measurements.
 
-## Key Features
+The project compares a simple soil-moisture threshold with multiple machine learning classifiers. The objective is not only to maximize prediction accuracy, but also to determine whether the additional complexity of machine learning is justified by the available data.
 
-- Soil moisture monitoring
-- Temperature and humidity analysis
-- Rainfall/environmental data analysis
-- Machine learning-based irrigation prediction
-- Comparison of multiple ML algorithms
-- IoT sensor integration
-- Data visualization and model evaluation
+## Research Question
 
-## Machine Learning Workflow
+**Can machine learning improve irrigation pump prediction compared with a simple soil-moisture threshold?**
 
-Data Collection → Data Preprocessing → Exploratory Data Analysis → Feature Engineering → Model Training → Model Evaluation → Irrigation Prediction
+## Dataset
 
-## Technologies
+The dataset contains **3,000 sensor observations** with four variables:
 
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Scikit-learn
-- Jupyter Notebook
-- IoT Sensors
+| Variable | Description |
+|---|---|
+| Soil Moisture | Raw soil-moisture sensor reading |
+| Temperature | Air temperature |
+| Air Humidity | Relative air humidity |
+| Pump Data | Irrigation pump status: 0 = OFF, 1 = ON |
 
-## Project Status
+The dataset contains no missing values or duplicate observations.
 
-🚧 Work in progress
+### Dataset Source
 
-The first version will develop and evaluate machine learning models using a public agricultural dataset. Future versions will integrate real-time IoT sensor data, weather information, and remote-sensing observations.
-Initialize Smart Irrigation ML project
+The data were originally published by **Amritpal Kaur, Devershi Pallavi Bhatt, and Linesh Raja** and are associated with research on IoT-based smart irrigation.
+
+**Dataset DOI:**  
+https://doi.org/10.17632/fpdwmm7nrb.1
+
+**Associated publication:**  
+Kaur, A., Bhatt, D. P., & Raja, L. (2024). *Developing a Hybrid Irrigation System for Smart Agriculture Using IoT Sensors and Machine Learning in Sri Ganganagar, Rajasthan*. Journal of Sensors, 2024, Article 6676907.
+
+https://doi.org/10.1155/2024/6676907
+
+> This repository uses the published dataset for independent educational and research-oriented machine learning analysis. The original data collection was performed by the dataset authors.
+
+## Methodology
+
+The project follows the workflow:
+
+**Sensor Data → Data Validation → Exploratory Data Analysis → Preprocessing → Baseline Model → Machine Learning → Model Evaluation**
+
+Three machine learning classifiers were evaluated:
+
+- Logistic Regression
+- Decision Tree
+- Random Forest
+
+A simple soil-moisture threshold was also established as a baseline.
+
+The dataset was divided into:
+
+- **80% training data:** 2,400 observations
+- **20% testing data:** 600 observations
+
+Stratified sampling was used to preserve the Pump ON/OFF class distribution.
+
+## Exploratory Data Analysis
+
+The dataset contains:
+
+- 1,569 Pump ON observations
+- 1,431 Pump OFF observations
+- No missing values
+- No duplicate rows
+
+Soil Moisture showed a strong negative correlation with Pump Data:
+
+**Correlation ≈ -0.855**
+
+Temperature and Air Humidity showed almost no linear correlation with pump status.
+
+Average raw Soil Moisture readings were approximately:
+
+- **Pump ON:** 509
+- **Pump OFF:** 831
+
+These observations suggested that soil moisture was likely to dominate pump prediction.
+
+## Baseline Model
+
+Before training machine learning models, a simple soil-moisture threshold was optimized using the training data only.
+
+**Optimal threshold ≈ 682.58**
+
+The baseline achieved:
+
+- **Training Accuracy:** 99.88%
+- **Test Accuracy:** 99.83%
+
+This provided a strong benchmark for evaluating whether more complex machine learning models offered meaningful improvement.
+
+## Machine Learning Results
+
+| Model | Accuracy | Precision | Recall | F1 Score |
+|---|---:|---:|---:|---:|
+| Soil Moisture Threshold | 99.83% | — | — | — |
+| Logistic Regression | 99.83% | 99.68% | 100.00% | 99.84% |
+| Decision Tree | 99.83% | 100.00% | 99.68% | 99.84% |
+| **Random Forest** | **100.00%** | **100.00%** | **100.00%** | **100.00%** |
+
+Random Forest correctly classified all **600 test observations** in this particular train/test split.
+
+## Feature Importance
+
+Random Forest feature importance:
+
+| Feature | Importance |
+|---|---:|
+| **Soil Moisture** | **97.80%** |
+| Air Humidity | 1.11% |
+| Temperature | 1.09% |
+
+The results confirm that the raw soil-moisture measurement contains most of the predictive information in this dataset.
+
+## Key Finding
+
+Although Random Forest achieved 100% test accuracy, the simple soil-moisture threshold already achieved **99.83%**.
+
+Therefore, this experiment does **not** demonstrate that a complex machine learning model is necessary for this particular irrigation dataset.
+
+For a simple embedded irrigation controller, a calibrated soil-moisture threshold may provide a more interpretable and computationally efficient solution.
+
+Machine learning may provide greater value when additional variables and more complex real-world conditions are introduced.
+
+## Repository Structure
+
+```text
+Smart-Irrigation-ML/
+│
+├── data/
+│   └── raw/
+│       └── smart_irrigation_data.csv
+│
+├── notebooks/
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_data_preprocessing.ipynb
+│   └── 03_model_training.ipynb
+│
+└── README.md
